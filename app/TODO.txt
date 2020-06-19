@@ -1,0 +1,8 @@
+TODO 
+
+# Add proper view for sign in sign up, and create event
+# add link to list of events by user in name link
+# Add timeout for flash messages javascript
+
+Bonus
+# Add minimum age for joining/invite

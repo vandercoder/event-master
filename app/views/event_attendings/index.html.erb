@@ -1,0 +1,16 @@
+<div class="column">
+  <div class="columns">
+    <div class="container">
+      <h1 class="title is-4">Attendees</h1>
+      <% @event.attendees.each do |attendee| %>
+        <div class="content">
+          <ol type="1">
+            <li>
+              <p><%= attendee.name %></p>
+            </li>
+          </ol>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

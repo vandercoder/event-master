@@ -12,9 +12,11 @@ date and at a location.
 * A user can create events. 
 * A user can attend many events. 
 * An event can be attended by many users.
+
+### Table
 ```
 events:
-id, event_name, date, location, organizer_id
+id, event_name, event_date, event_location, organizer_id
 
 users:
 id, name, age, username, email, password, password_confirmation
@@ -27,10 +29,10 @@ id, event_id, attending_user_id
 class Event < ActiveRecord::Base
     belongs_to :organizer, class_name: "User"
     has_many :event_attendings, foreign_key: :event_id
-    has_many :attenders, through: :event_attendings, source: :attending_user_id
+    has_many :attendees, through: :event_attendings, source: :attendee_id
 
 class User < ActiveRecord::Base
-    has_many :organized_events, foreign_key: :organizer_id, class_name: "Event"
+    has_many :organized_events, class_name: "Event", foreign_key: "organizer_id"
     has_many :event_attendings, foreign_key: :attending_user_id
     has_many :accepted_events, through: :event_attendings, source: :event
 
