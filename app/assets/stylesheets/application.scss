@@ -15,7 +15,16 @@
  */
 
  @import "bulma";
+ @import "font-awesome";
 
  nav.navbar {
-    margin-bottom: 2rem;
+   margin-bottom: 2rem;
+ }
+
+ .center-line-text {
+   text-align: center
+ }
+
+ .event-box {
+   margin-bottom: 2rem;
  }
