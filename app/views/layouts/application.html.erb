@@ -26,22 +26,16 @@
           <span></span>
         </div>
       </div>
-
-      
-
       <div class="navbar-menu">
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="field is-grouped">
               <% if user_signed_in? %>
-                <p class="button control">
-                  <%= current_user.name %>
-                </p>
                 <p class="control">
                   <%= link_to 'Create Event', new_event_path, class: "button is-light is-inverted" %>
                 </p>
                 <p>
-                  <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"button is-light" %>
+                  <%= link_to "#{current_user.name} | Logout", destroy_user_session_path, method: :delete, class:"button is-light" %>
                 </p>
               <% else %>
                 <p>

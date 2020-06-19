@@ -4,25 +4,14 @@
 
 <div class="column is-half">
   <% @events.each do |event| %>
-    <div class="box">
-      <article class="media">
-        <div class="media-content">
-          <div class="content">
-            <%= render 'info', event: event %>
-          </div>
-            <% if user_signed_in?%>
-              <%= link_to 'Show', event_path(event), class: "button is-small" %>
-
-              <% if current_user.id == event.organizer_id %> 
-                <%= link_to 'Edit', edit_event_path(event), class: "button is-small" %>
-                <%= link_to 'Delete', event, method: :delete, class: "button is-small",
-                  data: { confirm: 'Are you sure?' } %>
-              <% end %> 
-            <% end %>
-
+    <%= link_to event_path(event) do %>
+      <div class="box event-box">
+        <div class="content">
+          <%= render 'info', event: event %>
         </div>
-      </article>
-    </div>  
+      </div>
+
+    <% end %>  
   <% end %>
 </div>
 

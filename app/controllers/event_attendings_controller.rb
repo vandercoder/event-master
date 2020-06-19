@@ -7,10 +7,10 @@ class EventAttendingsController < ApplicationController
     @event = Event.find(params[:event_id])
 
     if already_signed_up
-      flash[:alert] = "You are already signed up to attend #{@event.event_name}!"
+      flash[:alert] = "#{@user.name} already signed up to attend #{@event.event_name}!"
     else
       @event.attendees << @user
-      flash[:notice] = "You are now signed up to attend #{@event.event_name}"
+      flash[:notice] = "#{@user.name} now signed up to attend #{@event.event_name}"
     end
 
     redirect_to @event
