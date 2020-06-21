@@ -1,0 +1,22 @@
+
+    <div class="container">
+      <h1 class="title is-4 center-line-text">Invite</h1>
+      <% user.each do |attendee| %>
+        <% if event.organizer_id != attendee.id && !event.attendees.exists?(:id => attendee.id)%>
+          <div class="content">
+            <div class="columns is-centered">
+              <div class="column is-half">
+                <p> <%= attendee.name %> </p> 
+              </div>
+            
+            <div class="column">
+              <%= form_with(model: event, url: event_event_attendings_path(event), method: "post") do |form| %>
+                <%= hidden_field_tag(:user_id, attendee.id) %>
+                <%= hidden_field_tag(:event_id, event.id) %>
+                <%= form.submit "invite", class: "button is-small"%>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>

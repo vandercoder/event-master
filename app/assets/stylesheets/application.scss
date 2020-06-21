@@ -17,6 +17,19 @@
  @import "bulma";
  @import "font-awesome";
 
+ // image reference : http://www.thelostgirlsguide.com/north-america/canada/saskatchewan-canada/what-the-windscape-kite-festival-is-all-about
+ html {
+   height: 100%;
+ }
+
+ body {
+   height: auto;
+   background: image-url('kite-field.jpg') no-repeat;
+   background-size: cover;
+   background-position: cover;
+   background-attachment: scroll;
+ }
+
  nav.navbar {
    margin-bottom: 2rem;
  }
@@ -30,6 +43,5 @@
  }
 
  .attendee {
-    border-right: 2px solid lightgrey;
-
+    border-left: 2px solid lightgrey;
  }

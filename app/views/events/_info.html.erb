@@ -1,4 +1,14 @@
-<p>Event    : <%= event.event_name %> </p>
-<p>Date     : <%= event.event_date %> </p>
-<p>Location : <%= event.event_location %> </p>
-Organized by<strong> <%= event.organizer.name %> </strong> <br/>
+<div class="center-line-text">
+  <p class="title is-6"><%= event.event_name %> </p>
+  <p>Location : <%= event.event_location %> </p>
+  <p>Date     : <%= event.event_date %> </p>
+  <p>
+    Organized by <strong>
+      <% if user_signed_in? &&  event.organizer.name == current_user.name %>
+          You
+      <% else %>
+        <%= event.organizer.name %> 
+      <% end %>
+    </strong>
+  </p> 
+</div>

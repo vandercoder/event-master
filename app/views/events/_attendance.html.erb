@@ -1,0 +1,20 @@
+
+    <div class="container">
+      <h1 class="title is-4">Attendees</h1>
+      <% event.attendees.each do |attendee| %>
+        <div class="content">
+          <div class="columns">
+            <div class="column">
+              <p> <%= attendee.name %> </p>
+            </div>
+
+            <% if user_signed_in? && current_user.id == event.organizer_id%>  
+              <div class="column">
+                <%= link_to 'Delete', event_event_attending_path(event, :user_id => attendee.id),
+                method: :delete, class: "button is-small" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>

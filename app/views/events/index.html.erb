@@ -1,18 +1,21 @@
-<div class="container is-fluid">
-  <p class="event title is-3">Events</p>
-</div>
+  <div class="container is-fluid center-line-text">
+    <p class="event title is-3">Events</p>
+  </div>
 
-<div class="column is-half">
-  <% @events.each do |event| %>
-    <%= link_to event_path(event) do %>
-      <div class="box event-box">
-        <div class="content">
-          <%= render 'info', event: event %>
-        </div>
-      </div>
+  <div class="columns is-centered">
+    <div class="column is-one-third">
+      <hr>
+      <% @events.each do |event| %>
+        <%= link_to event_path(event) do %>
+          <div class="box event-box">
+            <div class="content">
+              <%= render 'info', event: event %>
+            </div>
+          </div>
 
-    <% end %>  
-  <% end %>
-</div>
+        <% end %>  
+      <% end %>
+    </div>
 
-<br>
+    <br />
+  </div>

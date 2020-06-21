@@ -1,7 +1,7 @@
 <div class="container">
   <div class="columns is-centered">
 
-    <div class="column is-two-thirds">
+    <div class="column is-one-third">
 
       <div class="box center-line-text">
         <div class="content">
@@ -18,68 +18,25 @@
       </div>
         
       <div class="box center-line-text">
-        <div class="columns is-gapless">
-          <div class="column is-half attendee">
-            <div class="container">
-              <h1 class="title is-4">Attendees</h1>
-              <% @event.attendees.each do |attendee| %>
-                <div class="content">
-                  <div class="columns">
-                    <div class="column is-one-third">
-                      <p> - <%= attendee.name %> </p>
-                    </div>
+        <%= render 'attendance', event: @event, user: @user %>
+      </div>
 
-                    <% if user_signed_in? && current_user.id == @event.organizer_id%>  
-                    <div class="column">
-                      <%= link_to 'Delete', event_event_attending_path(@event, :user_id => attendee.id),
-                      method: :delete, class: "button is-small" %>
-                    </div>
-                    <% end %>
-                  </div>
-                </div>
-              <% end %>
-
-            </div>
-          </div>
-
-          <div class="column is-half">
-            <% if user_signed_in? && current_user.id == @event.organizer_id%>
-              <div class="container">
-                <h1 class="title is-4 ">Invite</h1>
-                
-                <% @user.each do |user| %>
-                  <% if @event.organizer_id != user.id && !@event.attendees.exists?(:id => user.id)%>
-                    <div class="content">
-                      <div class="columns">
-                        <div class="column is-one-third">
-                          <p> <%= user.name %> </p> 
-                        </div>
-                      
-                      <div class="column">
-                        <%= form_with(model: @event, url: event_event_attendings_path(@event), method: "post") do |form| %>
-                          <%= hidden_field_tag(:user_id, user.id) %>
-                          <%= hidden_field_tag(:event_id, @event.id) %>
-                          <%= form.submit "invite", class: "button is-small"%>
-                        <% end %>
-                      </div>
-                    </div>
-                  <% end %>
-                <% end %>
-              </div>
+      <% if user_signed_in? && current_user.id == @event.organizer_id%>
+      <div class="box center-line-text">
+        <%= render 'invite', event: @event, user: @user %>
+      </div>
+      
+      <% else %>
+        <div class="container center-line-text">
+          <% if user_signed_in? && current_user.id != @event.organizer_id%>
+            <%= form_with(model: @event, url: event_event_attendings_path(@event), method: "post") do |form| %>
+              <%= hidden_field_tag(:user_id, current_user.id) %>
+              <%= hidden_field_tag(:event_id, @event.id) %>
+              <%= form.submit "Join Event!", class: "button is-small is-info"%>
             <% end %>
-          </div>
-        </div>
-      </div>
-
-      <div class="container center-line-text">
-        <% if user_signed_in? && current_user.id != @event.organizer_id%>
-          <%= form_with(model: @event, url: event_event_attendings_path(@event), method: "post") do |form| %>
-            <%= hidden_field_tag(:user_id, current_user.id) %>
-            <%= hidden_field_tag(:event_id, @event.id) %>
-            <%= form.submit "Join Event!", class: "button is-small is-info"%>
           <% end %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
 
   </div>

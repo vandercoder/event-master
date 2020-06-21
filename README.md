@@ -1,6 +1,6 @@
 # Event Master
 
-This a is mock-up website project based on www.eventbrite.com created using 
+This is a website project implementation based on www.eventbrite.com created using 
 Ruby on Rails.
 
 ### Specifications:
@@ -13,7 +13,8 @@ date and at a location.
 * A user can attend many events. 
 * An event can be attended by many users.
 
-### Table
+### Initial Model Layout
+### Table Design
 ```
 events:
 id, event_name, event_date, event_location, organizer_id
@@ -25,6 +26,7 @@ event_attendings:
 id, event_id, attending_user_id
 ```
 
+### Model Association Design
 ```ruby
 class Event < ActiveRecord::Base
     belongs_to :organizer, class_name: "User"
