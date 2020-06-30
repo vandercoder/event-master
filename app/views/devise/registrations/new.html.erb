@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="hero is-fullheight">
 	<div class="columns is-centered">
 		<div class="column is-4">
       <h1 class="center-line-text title">Sign up</h1>
@@ -9,18 +9,18 @@
         <%= render "devise/shared/error_messages", resource: resource %>
         
         <div class="field">
-            <%= f.label :name %><br />
+            <%= f.label :name %>
             <%= f.text_field :name, autofocus: true, class: "input" %>
           </p>
         </div>
 
         <div class="field">
-          <%= f.label :age %><br />
+          <%= f.label :age %>
           <%= f.number_field :age, class: "input"%>
         </div>
 
         <div class="field">
-          <%= f.label :username %><br />
+          <%= f.label :username %>
           <p class="control has-icons-left">
             <%= f.text_field :username, class: "input" %>
             <span class="icon is-small is-left">
@@ -30,7 +30,7 @@
         </div>
 
         <div class="field">
-          <%= f.label :email %><br />
+          <%= f.label :email %>
 
           <p class="control has-icons-left">
             <%= f.email_field :email, class: "input", autocomplete: "email", wrapper: false %>
@@ -56,7 +56,7 @@
         </div>
 
         <div class="field">
-          <%= f.label :password_confirmation %><br />
+          <%= f.label :password_confirmation %>
           
           <p class="control has-icons-left">
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input" %>
@@ -71,10 +71,11 @@
         </div>
       <% end %>
 
+        <br />
+        <p class="center-line-text">
+          <%= render "devise/shared/links" %>
+        </p>
       </div>
-      <p class="center-line-text">
-        <%= render "devise/shared/links" %>
-      </p>
     </div>
   </div>
   </div>

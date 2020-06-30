@@ -1,41 +1,39 @@
 
-<div class="container">
-	<div class="columns is-centered">
-		<div class="column is-4">
-      <div class="box">
-        <%= form_with(model: event, local: true) do |f| %>
-          <% if event.errors.any? %>
-            <div id="error_explanation">
-              <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+<div class="columns is-centered">
+  <div class="column is-4">
+    <div class="box">
+      <%= form_with(model: event, local: true) do |f| %>
+        <% if event.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-              <ul>
-              <% event.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-              </ul>
-            </div>
-          <% end %>
-
-          <div class="field">
-            <%= f.label :event_name %><br />
-            <%= f.text_field :event_name, class: "input", placeholder: "Late night karaoke" %>
-          </div>
-          <div class="field">
-            <%= f.label :event_date %><br />
-            <%= f.date_field :event_date, class: "input", placeholder: "10-07-2020" %>
-          </div>
-          <div class="field">
-            <%= f.label :event_location %><br />
-            <%= f.text_field :event_location, class: "input", placeholder: "Singapore" %>
-          </div>
-
-          <br />
-
-          <div class="actions center-line-text">
-            <%= f.submit "Create Event", class:"button is-light" %>
+            <ul>
+            <% event.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
           </div>
         <% end %>
-      </div>
+
+        <div class="field">
+          <%= f.label :event_name %><br />
+          <%= f.text_field :event_name, class: "input", placeholder: "Late night karaoke" %>
+        </div>
+        <div class="field">
+          <%= f.label :event_date %><br />
+          <%= f.date_field :event_date, class: "input", placeholder: "10-07-2020" %>
+        </div>
+        <div class="field">
+          <%= f.label :event_location %><br />
+          <%= f.text_field :event_location, class: "input", placeholder: "Singapore" %>
+        </div>
+
+        <br />
+
+        <div class="actions center-line-text">
+          <%= f.submit "Create Event", class:"button is-light" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
